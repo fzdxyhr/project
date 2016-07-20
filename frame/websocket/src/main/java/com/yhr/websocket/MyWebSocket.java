@@ -1,6 +1,8 @@
 package com.yhr.websocket;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.socket.TextMessage;
+import org.springframework.web.socket.WebSocketSession;
 
 import javax.websocket.OnClose;
 import javax.websocket.OnMessage;
@@ -22,21 +24,21 @@ import java.util.concurrent.CopyOnWriteArraySet;
 public class MyWebSocket {
     private static int onlineCount = 0;
 
-    private static CopyOnWriteArraySet<MyWebSocket> webSocketSet = new CopyOnWriteArraySet<MyWebSocket>();
+    private static CopyOnWriteArraySet<WebSocketSession> webSocketSet = new CopyOnWriteArraySet<WebSocketSession>();
 
-    private Session session;
+    private WebSocketSession session;
 
     @OnOpen
-    public void onOpen (Session session){
+    public void onOpen (WebSocketSession session){
         this.session = session;
-        webSocketSet.add(this);
+        webSocketSet.add(session);
         addOnlineCount();
-        System.out.println("有新链接加入!当前在线人数为" + getOnlineCount());
+        System.out.println("有新链接加入!当前在线人数为" + getOnlineCount()+"sessionId:");
     }
 
     @OnClose
-    public void onClose (){
-        webSocketSet.remove(this);
+    public void onClose (WebSocketSession session){
+        webSocketSet.remove(session);
         subOnlineCount();
         System.out.println("有一链接关闭!当前在线人数为" + getOnlineCount());
     }
@@ -45,13 +47,14 @@ public class MyWebSocket {
     public void onMessage (String message, Session session) throws IOException {
         System.out.println("来自客户端的消息:" + message);
         // 群发消息
-        for ( MyWebSocket item : webSocketSet ){
-            item.sendMessage(message);
+        for (WebSocketSession item : webSocketSet ){
+            TextMessage textMessage = new TextMessage(message);
+            item.sendMessage(textMessage);
         }
     }
 
     public void sendMessage (String message) throws IOException {
-        this.session.getBasicRemote().sendText(message);
+
     }
 
 

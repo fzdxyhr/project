@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="yhr.websoket:war">
+    <output-path>$PROJECT_DIR$/frame/websocket/target</output-path>
+    <root id="archive" name="yhr.websoket-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="yhr.websoket:war exploded" />
+    </root>
+  </artifact>
+</component>
