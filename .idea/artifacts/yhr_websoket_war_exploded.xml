@@ -7,6 +7,7 @@
           <element id="module-output" name="yhr.websoket" />
         </element>
         <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: org.projectlombok:lombok:1.16.6" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-web:1.0.2.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter:1.3.3.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot:1.3.3.RELEASE" />
