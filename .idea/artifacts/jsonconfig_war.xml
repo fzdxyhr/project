@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="jsonconfig:war">
+    <output-path>$PROJECT_DIR$/frame/jsonconfig/target</output-path>
+    <root id="archive" name="jsonconfig-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="jsonconfig:war exploded" />
+    </root>
+  </artifact>
+</component>
