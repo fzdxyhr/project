@@ -4,6 +4,8 @@
     <file url="file://$PROJECT_DIR$/frame" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/frame/jsonconfig" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/frame/jsonconfig/src/main/java/com/yhr/Application.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/frame/jsonconfig/src/main/resources/template/markdown.hbs" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/frame/jsonconfig/src/main/resources/template/strapdown.html.hbs" charset="GBK" />
     <file url="file://$PROJECT_DIR$/frame/websocket" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/frame/websocket/src/main/webapp/WEB-INF/js/jquery-1.7.1.min.js" charset="GBK" />
   </component>

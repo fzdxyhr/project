@@ -1,5 +1,6 @@
 package com.yhr;
 
+import com.wordnik.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
@@ -7,7 +8,10 @@ import lombok.Data;
  */
 @Data
 public class UserVo {
+    @ApiModelProperty("用户id")
     private Long id;
+    @ApiModelProperty("用户名")
     private String UserName;
+    @ApiModelProperty("用户密码")
     private String password;
 }
