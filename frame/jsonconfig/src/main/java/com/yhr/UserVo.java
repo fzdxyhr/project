@@ -1,6 +1,6 @@
 package com.yhr;
 
-import com.wordnik.swagger.annotations.ApiModelProperty;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**

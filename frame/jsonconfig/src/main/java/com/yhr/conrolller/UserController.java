@@ -1,17 +1,13 @@
 package com.yhr.conrolller;
 
-
-import com.wordnik.swagger.annotations.Api;
-import com.wordnik.swagger.annotations.ApiOperation;
-import com.wordnik.swagger.annotations.ApiParam;
 import com.yhr.UserVo;
 import com.yhr.po.User;
 import com.yhr.repository.UserRepository;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -41,6 +37,25 @@ public class UserController {
         user.setId(userVo.getId());
         user = userRepository.save(user);
         return user;
+    }
+
+    @ApiOperation("删除用户")
+    @RequestMapping(value = "/users/{id}",method = RequestMethod.DELETE)
+    public void delete(@ApiParam("用户标识") @PathVariable("id") Long id){
+        User user = userRepository.findOne(id);
+        if(user != null) {
+            userRepository.delete(user);
+        }
+    }
+
+    @ApiOperation("根据id获取用户信息")
+    @RequestMapping(value = "/users/{id}",method = RequestMethod.GET)
+    public User get(@ApiParam("用户标识") @PathVariable("id") Long id){
+        User user = userRepository.findOne(id);
+        if(user != null) {
+            return user;
+        }
+        return null;
     }
 
 }

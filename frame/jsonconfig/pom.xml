@@ -11,22 +11,31 @@
     <artifactId>jsonconfig</artifactId>
     <packaging>war</packaging>
 
+    <properties>
+        <swagger.api.host>localhost:8080</swagger.api.host>
+        <swagger.api.title>用户管理</swagger.api.title>
+        <swagger.scheme>http</swagger.scheme>
+        <swagger.api.version>v1</swagger.api.version>
+        <swagger.api.description>用户管理相关接口</swagger.api.description>
+        <swagger.api.location>com.yhr.conrolller</swagger.api.location>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
             <version>2.7.3</version>
         </dependency>
-        <dependency>
-            <groupId>com.wordnik</groupId>
-            <artifactId>swagger-core</artifactId>
-            <version>1.5.3-M1</version>
-        </dependency>
         <!--<dependency>-->
-            <!--<groupId>io.swagger</groupId>-->
+            <!--<groupId>com.wordnik</groupId>-->
             <!--<artifactId>swagger-core</artifactId>-->
-            <!--<version>1.5.3</version>-->
+            <!--<version>1.5.3-M1</version>-->
         <!--</dependency>-->
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-core</artifactId>
+            <version>1.5.3</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -43,19 +52,19 @@
             <plugin>
                 <groupId>com.github.kongchen</groupId>
                 <artifactId>swagger-maven-plugin</artifactId>
-                <version>3.0.1</version>
+                <version>3.1.0</version>
                 <configuration>
                     <apiSources>
                         <apiSource>
                             <springmvc>true</springmvc>
-                            <locations>com.yhr.conrolller</locations>
-                            <schemes>http,https</schemes>
-                            <host>petstore.swagger.wordnik.com</host>
-                            <basePath>/api</basePath>
+                            <locations>${swagger.api.location}</locations>
+                            <schemes>${swagger.scheme}</schemes>
+                            <host>${swagger.api.host}</host>
+                            <basePath></basePath>
                             <info>
-                                <title>Swagger Maven Plugin Sample</title>
-                                <version>v1</version>
-                                <description>This is a sample for swagger-maven-plugin</description>
+                                <title>${swagger.api.title}</title>
+                                <version>${swagger.api.version}</version>
+                                <description>${swagger.api.description}</description>
                                 <termsOfService>
                                     http://www.github.com/kongchen/swagger-maven-plugin
                                 </termsOfService>
@@ -64,16 +73,16 @@
                                     <name>Kong Chen</name>
                                     <url>http://kongch.com</url>
                                 </contact>
-                                <license>
-                                    <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
-                                    <name>Apache 2.0</name>
-                                </license>
+                                <!--<license>-->
+                                    <!--<url>http://www.apache.org/licenses/LICENSE-2.0.html</url>-->
+                                    <!--<name>Apache 2.0</name>-->
+                                <!--</license>-->
 
                             </info>
                             <!--Support classpath or file absolute path here. 1) classpath e.g: "classpath:/markdown.hbs", "classpath:/templates/hello.html" 2) file e.g: "${basedir}/src/main/resources/markdown.hbs", "${basedir}/src/main/resources/template/hello.html"-->
                             <templatePath>classpath:/template/strapdown.html.hbs</templatePath>
                             <outputPath>${basedir}/generated/document.html</outputPath>
-                            <swaggerDirectory>generated/swagger-ui</swaggerDirectory>
+                            <swaggerDirectory>${basedir}/generated/swagger-ui</swaggerDirectory>
                         </apiSource>
                     </apiSources>
                 </configuration>
